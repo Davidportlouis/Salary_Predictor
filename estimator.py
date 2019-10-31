@@ -45,3 +45,13 @@ plt.xlabel('Experience in years')
 plt.ylabel('Salary in $')
 plt.title('Salary Prediction on Test Data')
 plt.show()
+
+print("Enter Experience in years: ")
+experience = [int(input())]
+# print(salary)
+# print(type(salary))
+experience_arr = np.array([experience])
+# print(experience.shape)
+sal_pred = lm.predict(experience_arr)
+# sal_pred = sal_pred.reshape(1,0)
+print(f"Estimated Pay for {experience} years experience: $ {sal_pred} | Accuracy: {r2_score(y_pred_test,y_test)*100}%")
