@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import r2_score
 
-data = pd.read_csv('./salary-data/Salary_Data.csv')
+data = pd.read_csv('./salary_data/data.csv')
 
 
 
@@ -32,7 +32,7 @@ plt.scatter(x_train,y_train,color='red',alpha=0.5)
 plt.plot(x_train,y_pred)
 plt.xlabel('Experience in years')
 plt.ylabel('Salary in $')
-plt.title('Salary Prediction on Train Data')
+plt.title('Salary Prediction using Scikit')
 plt.show()
 
 y_pred_test = lm.predict(x_test)
