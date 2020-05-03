@@ -1,8 +1,8 @@
-## Salary Prediction using machine learning
+ ## Salary Prediction using machine learning
 
-_*hypothesis*_
-$$h_{\Theta}(x) = \Theta_{0}x_{0} + \Theta_{1}x_{1}$$
+ _*hypothesis*_
+ $$h_{\Theta}(x) = \Theta_{0}x_{0} + \Theta_{1}x_{1}$$
 
-_*Cost function*_
-$$J(\Theta) = \frac{1}-{2m} \sum_{i=1}^n (h_{\Theta}(x^{i}) - y^{i})^{2}
+ _*Cost function*_
+ $$J(\Theta) = \frac{1}-{2m} \sum_{i=1}^n (h_{\Theta}(x^{i}) - y^{i})^{2}
 
