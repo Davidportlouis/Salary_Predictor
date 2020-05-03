@@ -2,7 +2,7 @@
 
  _**hypothesis**_
 
- <img src="https://render.githubusercontent.com/render/math?math=h_{\Theta}(x) = \Theta_{0}x_{0} \plus \Theta_{1}x_{1}">
+ <img src="https://render.githubusercontent.com/render/math?math=h_{\Theta}(x) = \Theta_{0}x_{0} \+ \Theta_{1}x_{1}">
 
  _**Cost function**_
 
