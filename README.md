@@ -12,6 +12,6 @@
 
  __repeat until convergence / num_iterations__ 
 
- <img src="https://render.githubusercontent.com/render/math?math= \Theta_{0} := \Theta_{0} - \frace{1}{m} (h_{\theta}(x^{i}) - y^{i})">
+ <img src="https://render.githubusercontent.com/render/math?math=\Theta_{0} := \Theta_{0} - \frace{1}{m} (h_{\theta}(x^{i}) - y^{i})">
 
- <img src="https://render.githubusercontent.com/render/math?math= \Theta_{1} := \Theta_{1} - \frace{1}{m} (h_{\theta}(x^{i}) - y^{i})x^{i}_{j}">
+ <img src="https://render.githubusercontent.com/render/math?math=\Theta_{1} := \Theta_{1} - \frace{1}{m} (h_{\theta}(x^{i}) - y^{i})x^{i}_{j}">
