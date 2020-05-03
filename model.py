@@ -1,52 +1,49 @@
-## Linear Regression from Scratch
-
+## Linear Regression
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
 import pickle
+import matplotlib.pyplot as plt
 
-data = pd.read_csv("./salary_data/data.csv")
-# print(data.head(4))
-x = data.iloc[:,0].values.reshape(-1,1)
+data = pd.read_csv('salary_data/data.csv')
+X = data.iloc[:,0].values
 y = data.iloc[:,1].values
 
-class LinearRegression():
+X = X.reshape(-1,1)
 
-    def predict(self,X,theta):
-        return np.dot(X,theta)
+class LinearRegression:
+    def __init__(self):
+        self.weight = np.zeros(1)
+        self.bias = np.array(1.0)
 
-    def computeCost(self,X,y,theta):
-        prediction = self.predict(X,theta)
-        return ((prediction - y)**2).mean()/2
+    def predict(self,X):
+        return np.dot(self.weight,X.T) + self.bias
 
-    def gradientDescent(self,X,y,theta,alpha=0.01,epochs=1000):
+    def computeCost(self,X,y):
+        m,_ = X.shape
+        pred = self.predict(X)
+        return  ((pred - y)**2).mean()/2    
+
+    def gradientDescent(self,X,y,alpha=0.05,epochs=5000):
         for e in range(epochs):
-            preds = self.predict(X,theta)
-            theta[0] -= alpha * ((preds - y)).mean()
-            theta[1] -= alpha * ((preds - y)*X[:,1]).mean()
-            J = self.computeCost(X,y,theta)
-        return theta
+            m,_ = X.shape
+            y_hat = self.predict(X)
+            self.weight -= alpha * ((y_hat - y)*X[:,0]).mean()
+            self.bias -= alpha * (y_hat - y).mean()
+            J = self.computeCost(X,y)
+        return self.weight,self.bias
 
     def train(self,X,y):
-        m= X.shape
-        theta = np.zeros(2)
-        X = np.column_stack((np.ones(m),X))
-        theta = self.gradientDescent(X,y,theta,alpha=0.005,epochs=5000)
-        preds = self.predict(X,theta)
-        print(theta)
-        return preds
+        m = X.shape
+        self.weight,self.bias = self.gradientDescent(X,y,alpha=0.05,epochs=500)
 
 model = LinearRegression()
-preds = model.train(x,y)
+model.train(X,y)
+preds = model.predict(X)
 
-plt.scatter(x,y,color='r',alpha=0.5)
-plt.title("Salary Prediction scratch")
-plt.xlabel("Experience in years")
+plt.plot(X,y,'.',X,preds,'-')
+plt.xlabel("Years of Experience")
 plt.ylabel("Salary in $")
-plt.plot(x,preds)
+plt.title("Salary Prediction (scratch lr)")
 plt.show()
 
-pickle.dump(model,open('checkpt.pkl','wb'))
-
-test_model = pickle.load(open("checkpt.pkl","rb"))
-pred = test_model.train(x,y)
+pickle.dump(open("checkpoint.pkl","wb"))
